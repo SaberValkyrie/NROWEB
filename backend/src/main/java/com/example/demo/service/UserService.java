@@ -14,7 +14,8 @@ public class UserService {
     private AccountRepository accountRepository;
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private PostRepository postRepository;
     public Account authenticate(Account loginRequest) {
         Account acc = userRepository.checkAcc(loginRequest.username, Util.md5(loginRequest.password));
         return acc;
@@ -35,4 +36,18 @@ public class UserService {
     public Account checkUserName(String username) {
         return userRepository.checkUser(username);
     }
+
+    public List<Post> getPostByStatus(byte status) {
+        return postRepository.getByStatus(status);
+    }
+
+    public List<Post> getbasicPost() {
+       return postRepository.getByStatus((byte) 0);
+    }
+
+    public Account getAccountBytoken(String token) {
+        return accountRepository.getAccbytoken(token);
+    }
+
+
 }

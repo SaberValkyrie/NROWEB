@@ -7,5 +7,5 @@ import lombok.Data;
 public class AccountResponse {
     public String token;
     public Player player;
-    public String pasword;
+    public String code;
 }

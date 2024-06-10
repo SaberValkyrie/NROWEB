@@ -137,85 +137,98 @@ trong suốt 3 năm qua
       }
     };
     
-    </script>
-    <style type="text/css">
-      .register{
-        color: black;
-      }
-      .register:hover{
-        color: rgb(175, 0, 0);
-        font-weight: bold;
-    
-      }
-    
-    @media only screen and (min-width: 768px){
-    body:not(.layout-admin) .section, body:not(.layout-admin) section {
-        padding: 100px 0;
-    }
-    }
-    
-    .d-middle {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .opacity-8,.overlay-opacity-8:after {
-        opacity: .8
-    }
-    
-    opacity-8, .overlay-opacity-8:after {
-        opacity: .8;
-    }
-    .overlay-dark-hover:hover:after, .overlay-dark:after {
-        background: #131f43;
-    }
-    .overlay-dark-hover:after, .overlay-dark:after, .overlay-light-hover:after, .overlay-light:after {
-        bottom: 0;
-        content: "";
-        height: 100%;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-        z-index: 0;
-    }
-    
-    .row.text-center-md.text-center-xs.d-middle.justify-content-start {
-        zoom: 150%;
-    }
-    .bg-theme-color-light {
-        background-color: rgba(87,79,236,.04)!important;
-    }
-    .bg-cover {
-        background-position: 50%!important;
-        background-repeat: no-repeat!important;
-        background-size: cover!important;
-    }
-    .overlay-dark, .overlay-dark-hover, .overlay-light, .overlay-light-hover {
-        position: relative;
-    }
-    #overlay-default, .overlay-dark, .overlay-dark-hover:after, .overlay-default, .overlay-light, .overlay-light-hover:after {
-        transition: all .2s ease;
-    }
-    .section, section {
-        position: relative;
-        word-break: break-word;
-    }
-    
-    .overlay-dark>*, .overlay-light>* {
-        position: relative;
-        z-index: 1;
-    }
-    
-    
-    
-    
-    
-    
-    .col-12.col-lg-6.text-align-end.text-center-md.text-center-xs.aos-init.aos-animate {
-        padding: 4rem;
-    }
-        </style>
-    
+    </script><style type="text/css">
+  .register{
+    color: black;
+  }
+  .register:hover{
+    color: rgb(175, 0, 0);
+    font-weight: bold;
+
+  }
+  body {
+  background-image: url('https://i.pinimg.com/736x/ea/03/15/ea03153bcdda53d86ddba014a1d92fe9.jpg');
+  background-size: 100vw; 
+}
+/* @media only screen and (max-width: 768px) {
+  .d-inline-block.bg-white.shadow-primary-xs.rounded.p-4.p-md-5.w-100.max-w-450.text-align-start {
+    zoom: 130%;
+  }
+} */
+
+
+@media only screen and (min-width: 768px){
+body:not(.layout-admin) .section, body:not(.layout-admin) section {
+    padding: 100px 0;
+}
+}
+
+.d-middle {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.opacity-8,.overlay-opacity-8:after {
+    opacity: .8
+}
+
+opacity-8, .overlay-opacity-8:after {
+    opacity: .8;
+}
+.overlay-dark-hover:hover:after, .overlay-dark:after {
+    background: #131f43;
+}
+.overlay-dark-hover:after, .overlay-dark:after, .overlay-light-hover:after, .overlay-light:after {
+    bottom: 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.row.text-center-md.text-center-xs.d-middle.justify-content-start {
+    zoom: 150%;
+}
+.bg-theme-color-light {
+    background-color: rgba(87,79,236,.04)!important;
+}
+.bg-cover {
+    background-position: 50%!important;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+}
+.overlay-dark, .overlay-dark-hover, .overlay-light, .overlay-light-hover {
+    position: relative;
+}
+#overlay-default, .overlay-dark, .overlay-dark-hover:after, .overlay-default, .overlay-light, .overlay-light-hover:after {
+    transition: all .2s ease;
+}
+.section, section {
+    position: relative;
+    word-break: break-word;
+}
+
+.overlay-dark>*, .overlay-light>* {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+button.btn.w-100.btn-lg.btn-danger.bg-gradient-danger {
+    background-color: brown;
+}
+button.btn.w-100.btn-lg.btn-danger.bg-gradient-danger:hover {
+    background-color: rgb(37, 0, 0);
+}
+
+.col-12.col-lg-6.text-align-end.text-center-md.text-center-xs.aos-init.aos-animate {
+    padding: 2rem;
+}
+    </style>

@@ -113,17 +113,19 @@ window.location.href =  link;
 
 
 
-     checklogin() {
+  async checklogin() {
         const object = {
           username: this.username,
           password: this.password
         };
 this.accountService.login(object).then(res => {
-          toast.success(res.data.message);
           localStorage.setItem("token", res?.data.data.token);
           localStorage.setItem('loggedInUser', JSON.stringify(res?.data.data.player));
-          localStorage.setItem('codeXN', (res.data.data.user.code));
-          this.goto('/')
+          localStorage.setItem('codeXN', (res.data.data.code));
+          toast.success(res.data.message);
+          setTimeout(() => {
+        window.location.href = '/'
+}, 1000); 
 }).catch(error => {
 toast.warning(error.response.data.message)
 });

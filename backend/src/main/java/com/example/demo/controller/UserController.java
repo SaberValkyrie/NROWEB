@@ -31,7 +31,7 @@ public class UserController {
         if (account == null){
             return Util.checkStatusRes(HttpStatus.UNAUTHORIZED, "Sai tên đăng nhập hoặc mật khẩu", null);
         }
-        if (account.token.length() <= 5){
+        if (account.token.length() <= 15){
             account.token = UUID.randomUUID().toString();
         }
 
@@ -39,11 +39,12 @@ public class UserController {
         acccountService.saveAccount(account);
         AccountResponse accountResponse = new AccountResponse();
         accountResponse.token = account.token;
+        accountResponse.code = account.code;
 
         if (player != null){
             accountResponse.player = player;
         }
-        return Util.checkStatusRes(HttpStatus.OK, "Xác Minh Thành Công : " , accountResponse);
+        return Util.checkStatusRes(HttpStatus.OK, "Xác Minh Thành Công : " + account.username , accountResponse);
     }
 
 
@@ -83,6 +84,7 @@ public class UserController {
         account.token = UUID.randomUUID().toString();
         account.ip = request.getRemoteAddr();
         account.sodu = 0;
+        account.code = UUID.randomUUID().toString();
         account.is_admin = false;
         acccountService.saveAccount(account);
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -95,17 +97,26 @@ public class UserController {
     }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//    @PostMapping("/logout/{token}")
-//    public ResponseEntity<ResponseOpject> logout(HttpServletRequest request,@PathVariable String token) {
-//        User userToken = tokenService.getUserFromToken(token);
-//        if (userToken == null) {
-//            return Util.checkStatusRes(HttpStatus.UNAUTHORIZED, "Token sai", null);
-//        }
-//        tokenService.deleteToken(token);
-//        request.getSession().invalidate();
-//        return Util.checkStatusRes(HttpStatus.OK, "Đăng xuất thành công", null);
-//    }
-
+    @PostMapping("/logout/{token}")
+    public ResponseEntity<ResponseOpject> logout(HttpServletRequest request,@PathVariable String token) {
+        Account account = acccountService.getAccountBytoken(token);
+        if (account == null){
+            return Util.checkStatusRes(HttpStatus.NOT_FOUND, "Không tìm thấy account", null);
+        }
+        String res = UUID.randomUUID().toString();
+        account.token = res.substring(1,10);
+        acccountService.saveAccount(account);
+        request.getSession().invalidate();
+        return Util.checkStatusRes(HttpStatus.OK, "Đăng xuất thành công" + account.username, null);
+    }
+    @GetMapping("/getaccByToken/{token}")
+    public ResponseEntity<ResponseOpject> getaccByToken(HttpServletRequest request,@PathVariable String token) {
+        Account account = acccountService.getAccountBytoken(token);
+        if (account == null){
+            return Util.checkStatusRes(HttpStatus.NOT_FOUND, "Không tìm thấy account", null);
+        }
+        return Util.checkStatusRes(HttpStatus.OK, "ok", account);
+    }
 
 
 //@GetMapping("/checkAuthen/{token}/{code}")

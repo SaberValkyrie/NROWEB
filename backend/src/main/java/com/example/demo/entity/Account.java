@@ -29,13 +29,14 @@ public class Account {
     @Column(name = "ip_address")
     public String ip;
 
-    @Column(name = "so_du")
+    @Column(name = "thoi_vang")
     public int sodu;
 
     @Column(name = "token")
     public String token;
 
-
+    @Column(name = "code")
+    public String code;
     public Account() {
 
     }

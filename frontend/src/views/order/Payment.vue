@@ -1,23 +1,10 @@
 <template>
   <!-- Jumbotron -->
-  <app-header></app-header>
 
 
 
   <section class="bg-light py-5">
 
-<div class="cc">
-  <div v-if="phuongthuc == 0" >
-    <a > Bạn Muốn Đổi {{convert(account.tienmat)}} Số Dư Ví Đang Có Sang BeyPoint? </a> <span class="cm" @click="setPhuongThuc(1)"> Đổi ngay</span>
-  </div>
-  <div v-else>
-    <a  >Bạn muốn nạp bằng TKNH?  </a> <span class="cm" @click="setPhuongThuc(0)"> Dùng ngay</span>
-  </div>
-
-<br>
-<a>Bạn Không Có Tài Khoản Ngân Hàng? </a> <a href="https://shopee.vn/product/347108613/28951422476/" class="cm">Bấm Vào Đây!</a>
-
-</div>
 
       <div class="container" v-if="phuongthuc != 1">
           <div class="card shadow-0 border">
@@ -91,15 +78,23 @@
         account: {},
         phuongthuc:0,
         amountLeft:20000,
+        myAccount:{},
+
         }
        
       },
       created(){
-        this.getAcc()
-
+        this.getaccByToken()
       },
-      methods :{
 
+      methods :{
+        getaccByToken(){
+    this.service.getaccByToken(this.token).then(res => {
+        this.myAccount = res.data.data;
+        }).catch(error => {
+ toast.warning(error.response.data.message)
+});
+   },
         naptien(){
 
          this.service.checkNapTien(this.token,this.amountLeft)
@@ -128,7 +123,7 @@
           return name;
       },
         getQr(){
-          this.addInfo = 'naptk ' + this.account.username;
+          this.addInfo = 'naptk ' + this.myAccount.username;
     const link = `https://api.vietqr.io/image/MBbank-${this.stk}-SUKDJlE.jpg?accountName=${this.accountName}&amount=${this.amount}&addInfo=${this.addInfo}`;
     return link;
   
@@ -201,6 +196,7 @@ convert(power) {
 
 .qr {
     width: 50vw; /* Điều chỉnh kích thước QR theo đơn vị vw */
+    zoom:60%;
     height: auto;
 }
 

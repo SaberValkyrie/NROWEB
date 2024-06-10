@@ -12,24 +12,19 @@ export class AccountService {
 }
     //-----------------------------------------------------------------------------------------------------------------
 
-   async deleteCart(token,id) {
-     const cc = axios.delete(`${baseURL}/cart/delete/cartId=${id}/${token}`)
-     toast.success('Xóa sản phẩm thành công!'); 
-     
-   return (await cc).data.data;
-}
+ 
     //-----------------------------------------------------------------------------------------------------------------
 
 
-async getNotify(token) {
-  const response = axios.get(`${baseURL}/notify/read=false/${token}`);
-  return response.data.data;
+async getpost(type) {
+  const response = axios.get(`${baseURL}/post/getPost/${type}`);
+  return response;
 }
     //-----------------------------------------------------------------------------------------------------------------
 
-    async getUserInfo(token) {
-        const response = await axios.get(`${baseURL}/profile/${token}`);
-        return response.data.data;
+    async getaccByToken(token) {
+        const response = await axios.get(`${baseURL}/getaccByToken/${token}`);
+        return response;
     }
     
     //-----------------------------------------------------------------------------------------------------------------

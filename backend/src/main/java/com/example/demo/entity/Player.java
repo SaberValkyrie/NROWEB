@@ -14,8 +14,17 @@ public class Player {
     @Column(name = "id")
     public int id;
 
+    @Column(name = "items_body")
+    public String itemsBody;
+
+    @Column(name = "gender")
+    public byte gender;
+
     @Column(name = "data_inventory")
     public String inventory;
+
+    @Column(name = "name")
+    public String name;
 
     @Column(name = "account_id")
     public int accountID;
@@ -24,6 +33,5 @@ public class Player {
     public String point;
 
 
-    @Column(name = "code")
-    public String code;
+
 }
